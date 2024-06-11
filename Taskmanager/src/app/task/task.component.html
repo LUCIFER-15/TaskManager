@@ -1,0 +1,24 @@
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Task Manager</h1>
+    <form (ngSubmit)="addTask()" class="mb-4">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="New Task" [(ngModel)]="newTask.name" name="name" required>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" id="addtask">Add Task</button>
+    </form>
+  
+    <mat-card *ngFor="let task of tasks" class="mb-2">
+      <mat-card-content class="d-flex align-items-center">
+        <mat-form-field class="full-width">
+          <input matInput [(ngModel)]="task.name" name="name" (change)="updateTask(task)">
+        </mat-form-field>
+        <button mat-icon-button color="accent" (click)="updateTask(task)">
+          <mat-icon>check_circle</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteTask(task.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
